@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { PLAY_TIME, countSelector, countState, timeSelector, totalTimeState } from "../atom";
+import { PLAY_TIME, countSelector, countState, 
+         timeSelector, totalTimeState } from "../atom";
 import { useRecoilState, useRecoilValue} from "recoil";
 import { PauseIcon,PlayCircleIcon} from '@heroicons/react/20/solid';
-import { CardSection, Container, CountTxt, CountVal, CountingSection, Dot, MainContainer, PlayingBtn, PlayingContainer, RestContainer, TimeCard, Title, timeCardVariants } from "../styles";
+import { CardSection, Container, CountTxt, CountVal, CountingSection, 
+        Dot, MainContainer, PlayingBtn, PlayingContainer, RestContainer, 
+        TimeCard, Title, timeCardVariants } from "../styles";
 
 
 
@@ -17,11 +20,11 @@ function Main() {
 
     useEffect(()=> {
         if(!playYN) {
-            //시간이 흐를때 ~
+            //시간이 흐를때
             const timerInterval = setInterval(() => {
-                setTotalTime((current) => current-1);
-                //console.log(totalTime,minutes,seconds);
-                if(totalTime < 0) {
+                setTotalTime((current) => current - 1);
+
+                if(totalTime <= 0) {
                     clearInterval(timerInterval);
                     setTotalTime(PLAY_TIME);
                     setPlayYN(true);
